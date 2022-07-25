@@ -1,9 +1,9 @@
 package Easy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+//Link: https://leetcode.com/problems/valid-anagram/
 public class ValidAnagram {
 
     public static boolean isAnagram(String s, String t) {
@@ -13,13 +13,22 @@ public class ValidAnagram {
 
         byte[] stemp = s.getBytes();
         byte[] ttemp = t.getBytes();
-        Arrays.sort(stemp);
-        Arrays.sort(ttemp);
-        for (int i = 0; i < stemp.length; i++) {
-            if (!(stemp[i] == ttemp[i])) {
-                return false;
+
+        Map<Byte, Integer> occurrences = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            occurrences.merge(stemp[i], 1, Integer::sum);
+            occurrences.merge(ttemp[i], -1, Integer::sum);
+            {
+                if (occurrences.get(stemp[i]) == 0) {
+                    occurrences.remove(stemp[i]);
+                }
+                if (occurrences.get(ttemp[i])!= null && occurrences.get(ttemp[i]) == 0) {
+                    occurrences.remove(ttemp[i]);
+                }
             }
         }
-        return true;
+
+        return occurrences.isEmpty();
     }
 }
