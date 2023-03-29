@@ -17,11 +17,10 @@ public class PascalsTriangle {
                     currentList.add(1);
                 } else {
                     List<Integer> previousList = triangle.get(i - 1);
-                    int leftParent = j - 1;
-                    if (leftParent < 0 || j > previousList.size() - 1) {
+                    if (j - 1 < 0 || j > previousList.size() - 1) {
                         currentList.add(1);
                     } else {
-                        currentList.add(previousList.get(leftParent) + previousList.get(j));
+                        currentList.add(previousList.get(j - 1) + previousList.get(j));
                     }
                 }
             }
