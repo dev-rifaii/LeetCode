@@ -8,14 +8,13 @@ public class MergeTwoSortedLists {
             return list1;
         } else if (list1 == null) {
             return list2;
-        } else if (list1 == null && list2 == null) {
-            return null;
         }
 
         ListNode smallerList = list1.val > list2.val ? list2 : list1;
         ListNode biggerList = list2.val < list1.val ? list1 : list2;
         while (biggerList != null) {
-            if (biggerList.val >= smallerList.val && (smallerList.next == null || smallerList.next.val > biggerList.val)) {
+            if (biggerList.val >= smallerList.val
+                    && (smallerList.next == null || smallerList.next.val > biggerList.val)) {
                 smallerList.next = new ListNode(biggerList.val, smallerList.next);
                 biggerList = biggerList.next;
             }
