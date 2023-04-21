@@ -1,6 +1,8 @@
 Main.java
 tests/
 LeetCode.iml
+.gradle
+build
 ### IntelliJ IDEA ###
 .idea
 out/
