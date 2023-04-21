@@ -3,8 +3,6 @@ tests/
 LeetCode.iml
 .gradle
 build
-build/
-.gradle/
 ### IntelliJ IDEA ###
 .idea
 out/
