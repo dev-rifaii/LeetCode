@@ -13,7 +13,7 @@ public class MajorityElementTest {
     @ParameterizedTest
     @MethodSource("arguments")
     void majorityElementTest(int[] nums, int expectedOutput) {
-        assertEquals(MajorityElement.majorityElement(nums), expectedOutput);
+        assertEquals(expectedOutput, MajorityElement.majorityElement(nums));
     }
 
     static Stream<Arguments> arguments() {
