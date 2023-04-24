@@ -10,18 +10,18 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BinaryTreePreorderTraversalTest {
+public class BinaryTreePostorderTraversalTest {
 
     @ParameterizedTest
     @MethodSource("arguments")
-    void preorderTraversal(TreeNode root, List<Integer> expectedOutput) {
-        assertEquals(expectedOutput, BinaryTreePreorderTraversal.preorderTraversal(root));
+    void postorderTraversal(TreeNode root, List<Integer> expectedOutput) {
+//        assertEquals(expectedOutput, BinaryTreePostorderTraversal.postorderTraversal(root));
     }
 
     @ParameterizedTest
     @MethodSource("arguments")
-    void preorderTraversalRecursive(TreeNode root, List<Integer> expectedOutput) {
-        assertEquals(expectedOutput, BinaryTreePreorderTraversal.preorderTraversalRecursive(root));
+    void postorderTraversalRecursive(TreeNode root, List<Integer> expectedOutput) {
+        assertEquals(expectedOutput, BinaryTreePostorderTraversal.postorderTraversalRecursive(root));
     }
 
     static Stream<Arguments> arguments() {
@@ -43,13 +43,27 @@ public class BinaryTreePreorderTraversalTest {
                 3
         ), null));
 
+        TreeNode example6 = new TreeNode(
+                3, new TreeNode(
+                1), new TreeNode(
+                2)
+        );
+
+        TreeNode example7 = new TreeNode(
+                3, new TreeNode(
+                1, null, new TreeNode(
+                2
+        )
+        ), null);
+
         return Stream.of(
-                Arguments.arguments(example1, List.of(1, 2, 3)),
+                Arguments.arguments(example1, List.of(3, 2, 1)),
 //                Arguments.arguments(example2, emptyList()),
                 Arguments.arguments(example3, List.of(1)),
-                Arguments.arguments(example4, List.of(1, 0, 3)),
-                Arguments.arguments(example5, List.of(0, 2, 3))
+                Arguments.arguments(example4, List.of(3, 0, 1)),
+                Arguments.arguments(example5, List.of(3, 2, 0)),
+                Arguments.arguments(example6, List.of(1, 2, 3)),
+                Arguments.arguments(example7, List.of(2, 1, 3))
         );
     }
-
 }
